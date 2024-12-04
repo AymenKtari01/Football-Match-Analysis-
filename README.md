@@ -1,37 +1,42 @@
-# **Football-Match-Analysis**
+# **⚽ Football Match Analysis**
 
-## **Table of Contents**
+## **📚 Table of Contents**
 
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Project Structure](#project-structure)
-4. [Getting Started](#getting-started)
-5. [Implementation Ideas](#implementation-ideas)
-6. [Metrics](#metrics)
-7. [Usage](#usage)
-8. [Contributing](#contributing)
-9. [Project By](#projectby)
-
----
-
-## **Project Overview**
-
-This project uses advanced computer vision techniques and the YOLO (You Only Look Once) object detection model to analyze football games. By processing videos, the system identifies and tracks players, the ball, and movements, providing critical metrics such as player speed, distance covered, and team classification.
-
-## **Features**
-
-- **Player and Ball Detection**: Identify players and the ball in each video frame.
-- **Tracking**: Track player and ball movements over time.
-- **Camera Movement Estimation**: Handle dynamic camera angles and stabilize analysis.
-- **Team Assignment**: Classify players into their respective teams based on jersey color.
-- **Speed and Distance Calculation**: Measure player velocity and distance covered during the match.
-- **Output Visualization**: Generate processed videos with overlays showing the tracked players, ball, and other annotations.
+1. [📖 Project Overview](#project-overview)
+2. [✨ Features](#features)
+3. [📂 Project Structure](#project-structure)
+4. [🚀 Getting Started](#getting-started)
+5. [💡 Implementation Ideas](#implementation-ideas)
+6. [📊 Metrics](#metrics)
+7. [🛠️ Usage](#usage)
+8. [🤝 Contributing](#contributing)
+9. [🧑‍💻 Project By](#project-by)
 
 ---
 
-## **Project Structure**
+## **📖 Project Overview**
 
-The project follows a modular structure to simplify development and analysis.
+This project leverages advanced computer vision techniques and the YOLO (You Only Look Once) object detection model to analyze football matches. It processes videos to:  
+⚽ Detect players and the ball  
+📍 Track movements and positions  
+📊 Provide key metrics like player speed, distance covered, and team classifications.
+
+---
+
+## **✨ Features**
+
+- **🔍 Player and Ball Detection**: Identifies players and the ball in each video frame.
+- **📈 Tracking**: Maintains consistent IDs for objects throughout the match.
+- **🎥 Camera Movement Estimation**: Stabilizes dynamic camera angles.
+- **🔵 Team Assignment**: Classifies players by jersey color.
+- **⚡ Speed & Distance Calculation**: Computes velocity and total distance covered.
+- **📽️ Output Visualization**: Creates annotated videos showcasing the analysis.
+
+---
+
+## **📂 Project Structure**
+
+Here's the modular folder structure for this project:
 
 ```plaintext
 .
@@ -64,29 +69,30 @@ The project follows a modular structure to simplify development and analysis.
 
 ---
 
-## ⚽ Datasets
+## **📊 Datasets**
 
-This project utilizes the following datasets for soccer player detection and model improvement:
-
-| Use Case                | Dataset                                                                                                                                                          |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+This project combines datasets to improve accuracy:  
+| **Use Case** | **Dataset** |  
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|  
 | Soccer Player Detection | [![Download Dataset](https://app.roboflow.com/images/download-dataset-badge.svg)](https://universe.roboflow.com/roboflow-jvuqo/football-players-detection-3zvbc) |
 
-In addition to the Roboflow dataset, I am also using a **Kaggle dataset**, which I annotated manually to enhance the model's performance and augment the training data. This combined approach helps to create a more robust and accurate detection model.
+Additionally, a **manually annotated Kaggle dataset** was used to:  
+✅ Improve model accuracy  
+✅ Augment data for robust training
 
-## **Getting Started**
+---
 
-Follow these steps to set up and run the project.
+## **🚀 Getting Started**
 
-### **1. Prerequisites**
+### **1️⃣ Prerequisites**
 
-- Python 3.8 or higher
-- A compatible GPU (optional but recommended for faster processing)
+- Python 3.8+
+- A GPU (optional but speeds up processing)
 - Libraries: OpenCV, PyTorch, NumPy, Matplotlib
 
-### **2. Installation**
+### **2️⃣ Installation**
 
-Clone the repository and install the required dependencies:
+Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/AymenKtari01/Football-Match-Analysis-ComputerVision.git
@@ -94,15 +100,14 @@ cd Football-Match-Analysis-ComputerVision
 pip install -r requirements.txt
 ```
 
-### **3. Setup**
+### **3️⃣ Setup**
 
-- Place your raw input videos in the `input_videos` folder.
-- Download pre-trained YOLO weights and place them in the `models` folder.
-- Ensure that the `models` folder includes `best.pt` file of the YOLOv8 model.
+- Add raw videos to `input_videos/`.
+- Place YOLO weights in `models/`.
 
-### **4. Run the Project**
+### **4️⃣ Run**
 
-Start analyzing a video by running the main script:
+Analyze a video with:
 
 ```bash
 python main.py
@@ -110,57 +115,48 @@ python main.py
 
 ---
 
-## **Implementation Ideas**
+## **💡 Implementation Ideas**
 
-1. **Object Detection with YOLO**
+### **1. Object Detection**
 
-   - Load YOLO weights to detect players and the ball.
-   - Use bounding boxes to locate each object in every frame.
+- Use YOLO for player and ball detection.
 
-2. **Tracking**
+### **2. Tracking**
 
-   - Implement a tracker (e.g., SORT or DeepSORT) to maintain consistent IDs for players and the ball across frames.
+- Implement tracking algorithms (e.g., SORT/DeepSORT).
 
-3. **Team Assignment**
+### **3. Team Classification**
 
-   - Use color analysis from `color_assignment.ipynb` to classify players into their teams.
+- Assign teams based on jersey colors.
 
-4. **Speed and Distance Estimation**
+### **4. Speed & Distance**
 
-   - Calculate the Euclidean distance between player positions in consecutive frames.
-   - Convert frame distance to real-world distance using the frame rate and field dimensions.
+- Calculate distances and velocities from player trajectories.
 
-5. **Camera Movement Stabilization**
+### **5. Camera Movement Stabilization**
 
-   - Use the `camera_movement_estimator.py` to normalize camera shifts and improve tracking accuracy.
-
-6. **Output Videos**
-   - Annotate frames with bounding boxes, player IDs, ball positions, and other metrics.
+- Normalize camera shifts for improved analysis.
 
 ---
 
-## **Metrics**
+## **📊 Metrics**
 
-- **Detection Precision**: Percentage of correctly identified players and balls.
-- **Tracking Accuracy**: Accuracy of maintaining consistent object IDs across frames.
-- **Processing Time**: Time required to process a video.
-- **Speed/Distance Accuracy**: Comparison of calculated metrics with ground truth data.
+- **🎯 Detection Precision**: Measure correct detections.
+- **🏃 Tracking Accuracy**: Ensure consistent IDs.
+- **⏳ Processing Time**: Optimize analysis speed.
+- **📏 Metric Accuracy**: Validate calculations.
 
 ---
 
-## **Usage**
+## **🛠️ Usage**
 
-### **Player Detection and Tracking**
-
-Run the tracker on an input video:
+### **Player Detection & Tracking**
 
 ```bash
 python trackers/tracker.py --input input_videos/match1.mp4 --output output_videos/result.mp4
 ```
 
-### **Speed and Distance Estimation**
-
-Calculate metrics for players in a video:
+### **Speed & Distance Estimation**
 
 ```bash
 python speed_and_distance_estimator/speed_and_distance_estimator.py --input output_videos/result.mp4
@@ -168,23 +164,26 @@ python speed_and_distance_estimator/speed_and_distance_estimator.py --input outp
 
 ### **Team Classification**
 
-Classify players into teams based on colors:
-
 ```bash
 python team_assigner/team_assigner.py --input output_videos/result.mp4
 ```
 
 ---
 
-## **Contributing**
+## **🤝 Contributing**
 
-We welcome contributions to improve the project.
+🤗 Contributions are welcome!
 
-- Fork the repository and make your changes.
-- Submit a pull request with a detailed description of your modifications.
+1️⃣ Fork the repo  
+2️⃣ Make your changes  
+3️⃣ Submit a pull request
 
-## Project By
+---
+
+## **🧑‍💻 Project By**
 
 <a href="https://github.com/AymenKtari01/Football-Match-Analysis-ComputerVision/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=AymenKtari01/Football-Match-Analysis-ComputerVision" />
 </a>
+
+---
