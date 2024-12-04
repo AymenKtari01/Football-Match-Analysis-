@@ -27,7 +27,6 @@ This project leverages advanced computer vision techniques and the YOLO (You Onl
 
 - **🔍 Player and Ball Detection**: Identifies players and the ball in each video frame.
 - **📈 Tracking**: Maintains consistent IDs for objects throughout the match.
-- **🎥 Camera Movement Estimation**: Stabilizes dynamic camera angles.
 - **🔵 Team Assignment**: Classifies players by jersey color.
 - **⚡ Speed & Distance Calculation**: Computes velocity and total distance covered.
 - **📽️ Output Visualization**: Creates annotated videos showcasing the analysis.
@@ -132,10 +131,6 @@ python main.py
 ### **4. Speed & Distance**
 
 - Calculate distances and velocities from player trajectories.
-
-### **5. Camera Movement Stabilization**
-
-- Normalize camera shifts for improved analysis.
 
 ---
 
