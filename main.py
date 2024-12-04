@@ -5,7 +5,6 @@ import torch
 import numpy as np
 from team_assigner import TeamAssigner
 from player_ball_assigner import PlayerBallAssigner
-from camera_movement_estimator import CameraMovementEstimator
 from view_transformer import ViewTransformer
 from speed_and_distance_estimator import SpeedAndDistance_Estimator
 
@@ -14,7 +13,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"Using device: {device}")
     # Read Video
-    video_frames = read_video("input_videos/test_vid.mp4")
+    video_frames = read_video("input_videos/match1.mp4")
 
     # Initialize Tracker
     tracker = Tracker("models/best.pt")
@@ -24,16 +23,6 @@ def main():
     )
     # Get object positions
     tracker.add_position_to_tracks(tracks)
-
-    # camera movement estimator
-    # camera_movement_estimator = CameraMovementEstimator(video_frames[0])
-    # camera_movement_per_frame = camera_movement_estimator.get_camera_movement(
-    #     video_frames, read_from_stub=True, stub_path="stubs/camera_movement_stub.pkl"
-    # )
-    # camera_movement_estimator.add_adjust_positions_to_tracks(
-    #     tracks, camera_movement_per_frame
-    # )
-
     # View Trasnformer
     view_transformer = ViewTransformer()
     view_transformer.add_transformed_position_to_tracks(tracks)
@@ -81,16 +70,11 @@ def main():
         video_frames, tracks, team_ball_control
     )
 
-    ## Draw Camera movement
-    # output_video_frames = camera_movement_estimator.draw_camera_movement(
-    #     output_video_frames, camera_movement_per_frame
-    # )
-
     # Draw Speed and Distance
     speed_and_distance_estimator.draw_speed_and_distance(output_video_frames, tracks)
 
     # Save video
-    save_video(output_video_frames, "output_videos/output_video.avi")
+    save_video(output_video_frames, "output_videos/result.avi")
 
 
 if __name__ == "__main__":
